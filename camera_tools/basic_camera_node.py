@@ -22,6 +22,7 @@ class BasicCameraNode(Node):
         self.camera = cv2.VideoCapture(camera_index)
         if not self.camera.isOpened():
             self.get_logger().error(f'Failed to open camera at index {camera_index}')
+            self.get_logger().error(f'Available cameras: {cv2.VideoCapture.getNumberOfCameras()}')
             raise RuntimeError(f'Camera at index {camera_index} not available')
         
         # Get camera properties
